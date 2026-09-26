@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#075b3d">
+    <meta name="description" content="CV et portfolio de Yves Joël OUEDRAOGO, technicien supérieur en électricité au Burkina Faso.">
+    <title>Yves Joël OUEDRAOGO | CV et portfolio</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --green: #075b3d;
+            --green-dark: #06452f;
+            --yellow: #f2c64d;
+            --ink: #17251f;
+            --muted: #65716b;
+            --line: #e4e9e5;
+            --paper: #ffffff;
+            --wash: #f4f7f4;
+            --content: 1160px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: "Aptos", "Segoe UI", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        .container { width: min(var(--content), calc(100% - 64px)); margin-inline: auto; }
+
+        .utility-bar {
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            background: var(--green-dark);
+            color: #e8f2ec;
+            font-size: 11px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+        .utility-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .utility-mark { display: inline-flex; align-items: center; gap: 9px; }
+        .utility-mark::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); }
+
+        .site-header { border-bottom: 1px solid var(--line); background: var(--paper); }
+        .navigation { min-height: 82px; display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+        .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 750; }
+        .brand-mark {
+            width: 42px;
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: var(--green);
+            font-size: 13px;
+            letter-spacing: .5px;
+        }
+        .brand-name { font-size: 14px; letter-spacing: .2px; }
+        .brand-caption { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: 1.1px; text-transform: uppercase; }
+        .nav-links { display: flex; align-items: center; gap: 34px; margin: 0; padding: 0; list-style: none; }
+        .nav-links a { color: #4d5a53; font-size: 13px; font-weight: 600; transition: color .18s ease; }
+        .nav-links a:hover, .nav-links a:focus-visible { color: var(--green); }
+        .nav-links .nav-action { padding: 12px 17px; color: white; background: var(--green); }
+        .nav-links .nav-action:hover, .nav-links .nav-action:focus-visible { background: var(--green-dark); color: white; }
+
+        .hero { position: relative; overflow: hidden; background: var(--wash); }
+        .hero::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--yellow);
+            content: "";
+        }
+        .hero-grid { min-height: 620px; display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 68px; padding-block: 58px; }
+        .hero-copy { position: relative; z-index: 1; padding-block: 18px; animation: rise-in .65s ease both; }
+        .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--green); font-size: 11px; font-weight: 750; letter-spacing: 1.8px; text-transform: uppercase; }
+        .eyebrow::before { width: 28px; height: 2px; background: var(--yellow); content: ""; }
+        h1 {
+            max-width: 620px;
+            margin: 24px 0 20px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(46px, 6vw, 76px);
+            font-weight: 500;
+            line-height: .99;
+        }
+        h1 span { display: block; color: var(--green); }
+        .hero-description { max-width: 420px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.8; }
+        .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
+        .button { min-height: 48px; display: inline-flex; justify-content: center; align-items: center; padding: 0 20px; font-size: 13px; font-weight: 700; transition: background .18s ease, color .18s ease; }
+        .button-primary { color: white; background: var(--green); }
+        .button-primary:hover, .button-primary:focus-visible { background: var(--green-dark); }
+        .button-secondary { border: 1px solid #ccd7cf; color: var(--green); background: transparent; }
+        .button-secondary:hover, .button-secondary:focus-visible { border-color: var(--green); background: white; }
+        .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 42px; color: var(--muted); font-size: 12px; }
+        .hero-note strong { color: var(--ink); font-weight: 700; }
+        .hero-note::before { width: 34px; height: 1px; background: #aebcb2; content: ""; }
+
+        .hero-visual { position: relative; min-width: 0; animation: rise-in .75s .12s ease both; }
+        .image-frame { position: relative; height: 470px; margin-right: 22px; background: #dce5df; }
+        .image-frame::after { position: absolute; z-index: 0; inset: 14px -14px -14px 14px; border: 1px solid #b8c9bd; content: ""; pointer-events: none; }
+        .image-frame img { position: relative; z-index: 1; width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 38%; }
+        .image-label { position: absolute; z-index: 2; right: -22px; bottom: 26px; max-width: calc(100% - 30px); padding: 16px 20px; color: white; background: var(--green); }
+        .image-label span { display: block; color: #c4d8cd; font-size: 9px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+        .image-label strong { display: block; margin-top: 5px; font-family: Georgia, "Times New Roman", serif; font-size: 19px; font-weight: 500; }
+        .hero-index { position: absolute; top: -22px; right: 0; color: #9aa99f; font-family: Georgia, "Times New Roman", serif; font-size: 13px; letter-spacing: 1px; }
+
+        .profile-section { padding-block: 96px 104px; }
+        .section-heading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-bottom: 42px; }
+        .section-kicker { margin: 0 0 12px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: 1.7px; text-transform: uppercase; }
+        h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(32px, 4vw, 46px); font-weight: 500; line-height: 1.1; }
+        .section-intro { max-width: 440px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+        .profile-grid { display: grid; grid-template-columns: .8fr 1.2fr; border: 1px solid var(--line); }
+        .profile-feature { min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; padding: 30px; color: white; background: var(--green); }
+        .profile-feature span { color: #c7dacf; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+        .profile-feature strong { max-width: 270px; font-family: Georgia, "Times New Roman", serif; font-size: 29px; font-weight: 500; line-height: 1.2; }
+        .profile-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .detail { min-height: 114px; display: flex; flex-direction: column; justify-content: center; padding: 22px 28px; border-bottom: 1px solid var(--line); }
+        .detail:nth-child(odd) { border-right: 1px solid var(--line); }
+        .detail:nth-last-child(-n+2) { border-bottom: 0; }
+        .detail span { color: var(--muted); font-size: 11px; letter-spacing: .4px; }
+        .detail strong { margin-top: 8px; font-size: 15px; font-weight: 700; }
+
+        .profession-band { padding-block: 38px; background: var(--yellow); }
+        .profession-inner { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+        .profession-copy { display: flex; align-items: center; gap: 24px; }
+        .profession-number { color: rgb(23 37 31 / 48%); font-family: Georgia, "Times New Roman", serif; font-size: 36px; }
+        .profession-copy p { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 24px; }
+        .profession-label { font-size: 10px; font-weight: 750; letter-spacing: 1.3px; text-transform: uppercase; }
+
+        .site-footer { padding-block: 24px; color: #d2dfd7; background: #123d2d; font-size: 11px; }
+        .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+        .footer-inner p { margin: 0; }
+
+        .cv-section { padding-block: 88px; border-top: 1px solid var(--line); }
+        .education-section { background: var(--wash); }
+        .timeline { border-top: 1px solid var(--line); }
+        .timeline-item { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 42px; padding: 34px 0; border-bottom: 1px solid var(--line); }
+        .timeline-date { color: var(--green); font-size: 12px; font-weight: 750; line-height: 1.6; }
+        .timeline-content { max-width: 820px; }
+        .timeline-kicker { margin: 0 0 9px; color: var(--green); font-size: 10px; font-weight: 750; letter-spacing: 1.4px; text-transform: uppercase; }
+        .timeline-content h3, .skill-block h3, .reference h3 { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35; }
+        .timeline-content h4 { margin: 26px 0 12px; font-size: 12px; letter-spacing: .5px; }
+        .timeline-summary, .timeline-content > p:not(.timeline-kicker) { color: var(--muted); font-size: 13px; line-height: 1.8; }
+        .timeline-summary { margin: 12px 0 0; }
+        .cv-list { display: grid; gap: 10px; margin: 14px 0 0; padding-left: 19px; color: #48564e; font-size: 13px; line-height: 1.75; }
+        .cv-list li::marker { color: var(--green); }
+        .mission { margin-top: 28px; padding: 22px 24px; border-left: 3px solid var(--yellow); background: var(--wash); }
+        .mission h4 { margin-top: 7px; }
+        .mission p:last-child { margin-bottom: 0; }
+        .education-list { border-top: 1px solid #d9e1db; }
+        .education-item { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 38px; padding: 22px 0; border-bottom: 1px solid #d9e1db; }
+        .education-item time { color: var(--green); font-size: 12px; font-weight: 750; }
+        .education-item h3 { margin: 0; font-size: 14px; line-height: 1.5; }
+        .education-item p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+        .skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px 60px; }
+        .skill-block { padding-top: 20px; border-top: 2px solid var(--green); }
+        .skill-block h3 { margin-bottom: 12px; }
+        .skill-block > p:last-child { max-width: 480px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+        .skill-block .cv-list { margin-top: 12px; }
+        .language-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+        .language-list li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
+        .language-list li span:last-child { color: var(--muted); }
+
+        .contact-band { padding-block: 84px; color: white; background: var(--green-dark); }
+        .contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 72px; }
+        .contact-copy .section-kicker, .references > .timeline-kicker { color: var(--yellow); }
+        .contact-copy h2 { max-width: 400px; color: white; }
+        .contact-copy > p:not(.section-kicker) { margin: 24px 0 16px; color: #c8d8cf; font-size: 13px; line-height: 1.7; }
+        .contact-email, .phone-list a { display: block; width: fit-content; margin-top: 9px; color: white; font-size: 14px; font-weight: 650; text-decoration: underline; text-decoration-color: #779985; text-underline-offset: 4px; }
+        .phone-list { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; }
+        .phone-list a { color: #d8e5dc; font-size: 12px; }
+        .references { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; gap: 0 28px; }
+        .references > .timeline-kicker { grid-column: 1 / -1; margin-bottom: 18px; }
+        .reference { padding: 17px 0; border-top: 1px solid rgb(255 255 255 / 22%); }
+        .reference h3 { font-size: 14px; }
+        .reference p { margin: 5px 0; color: #c8d8cf; font-size: 11px; line-height: 1.6; }
+        .reference a { color: #f6d979; font-size: 11px; }
+        .declaration { display: flex; justify-content: space-between; gap: 40px; padding-block: 30px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+        .declaration p { max-width: 670px; margin: 0; }
+        .declaration p:last-child { flex: 0 0 auto; color: var(--ink); text-align: right; }
+
+        @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+        @media (max-width: 780px) {
+            .container { width: min(var(--content), calc(100% - 40px)); }
+            .navigation { min-height: 72px; gap: 14px; }
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 12px; }
+            .nav-links .nav-action { padding: 10px 12px; }
+            .hero-grid { min-height: auto; grid-template-columns: 1.02fr .98fr; gap: 30px; padding-block: 58px; }
+            .image-frame { height: 390px; margin-right: 15px; }
+            .image-label { right: -15px; padding: 13px 15px; }
+            .profile-section { padding-block: 76px; }
+            .cv-section { padding-block: 70px; }
+            .timeline-item { grid-template-columns: 145px minmax(0, 1fr); gap: 26px; }
+            .contact-layout { gap: 40px; }
+        }
+        @media (max-width: 600px) {
+            .container { width: calc(100% - 36px); }
+            .utility-bar { min-height: 32px; font-size: 9px; }
+            .utility-bar .container span:last-child { display: none; }
+            .navigation { min-height: auto; flex-wrap: wrap; padding-block: 15px 0; }
+            .brand-mark { width: 38px; }
+            .nav-links { width: 100%; justify-content: space-between; gap: 10px; padding-block: 13px; border-top: 1px solid var(--line); }
+            .nav-links li { white-space: nowrap; }
+            .nav-links .nav-action { padding: 8px 10px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 38px; padding-block: 50px 52px; }
+            h1 { margin-block: 20px 16px; font-size: clamp(45px, 13vw, 64px); }
+            .hero-description { font-size: 14px; }
+            .hero-note { margin-top: 28px; }
+            .hero-visual { width: calc(100% - 12px); margin-right: 12px; }
+            .image-frame { height: min(108vw, 440px); margin-right: 12px; }
+            .image-frame::after { inset: 10px -10px -10px 10px; }
+            .image-label { right: -12px; bottom: 18px; }
+            .profile-section { padding-block: 68px; }
+            .cv-section { padding-block: 62px; }
+            .section-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 28px; }
+            .section-intro { font-size: 13px; }
+            .profile-grid { grid-template-columns: 1fr; }
+            .profile-feature { min-height: 170px; padding: 24px; }
+            .profile-feature strong { font-size: 25px; }
+            .detail { min-height: 98px; padding: 17px; }
+            .detail strong { font-size: 13px; }
+            .timeline-item { grid-template-columns: 1fr; gap: 10px; padding: 26px 0; }
+            .timeline-date { font-size: 11px; }
+            .timeline-content h3 { font-size: 16px; }
+            .cv-list { font-size: 12px; }
+            .mission { padding: 18px; }
+            .education-item { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+            .skills-grid { grid-template-columns: 1fr; gap: 30px; }
+            .contact-band { padding-block: 64px; }
+            .contact-layout { grid-template-columns: 1fr; gap: 44px; }
+            .references { gap: 0 18px; }
+            .declaration { flex-direction: column; gap: 18px; }
+            .declaration p:last-child { text-align: left; }
+            .footer-inner { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="utility-bar">
+        <div class="container">
+            <span class="utility-mark">Portfolio professionnel</span>
+            <span>Burkina Faso</span>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <nav class="navigation container" aria-label="Navigation principale">
+            <a class="brand" href="#accueil" aria-label="Yves Joël OUEDRAOGO, accueil">
+                <span class="brand-mark" aria-hidden="true">YO</span>
+                <span class="brand-name">Yves Joël OUEDRAOGO<span class="brand-caption">CV · Électricité & maintenance</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#experiences">Expériences</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a class="nav-action" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="accueil" aria-labelledby="hero-title">
+            <div class="hero-grid container">
+                <div class="hero-copy">
+                    <p class="eyebrow">Portfolio professionnel</p>
+                    <h1 id="hero-title">Yves Joël <span>OUEDRAOGO</span></h1>
+                    <p class="hero-description">Technicien supérieur en électricité, spécialisé dans les systèmes électriques, les réseaux HTA et la maintenance industrielle.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#experiences">Voir mes expériences</a>
+                        <a class="button button-secondary" href="mailto:yvesjouedraogo@gmail.com">Me contacter</a>
+                    </div>
+                    <p class="hero-note"><strong>Ouagadougou</strong><span>Burkina Faso · Permis C</span></p>
+                </div>
+                <div class="hero-visual">
+                    <span class="hero-index">CV / 2026</span>
+                    <div class="image-frame">
+                        <img src="photo.jpg" alt="Portrait de Yves Joël OUEDRAOGO">
+                        <div class="image-label"><span>Fonction actuelle</span><strong>Technicien supérieur en électricité</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-section container" id="profil" aria-labelledby="profile-title">
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">Informations personnelles</p>
+                    <h2 id="profile-title">Profil</h2>
+                </div>
+                <p class="section-intro">Ingénieur de travaux des systèmes électriques et technicien supérieur, avec une expérience en travaux électriques, réseaux et maintenance.</p>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-feature">
+                    <span>Yves Joël OUEDRAOGO</span>
+                    <strong>Électricité, réseaux et maintenance industrielle.</strong>
+                </div>
+                <div class="profile-details">
+                    <div class="detail"><span>Nom</span><strong>OUEDRAOGO</strong></div>
+                    <div class="detail"><span>Prénom</span><strong>Yves Joël</strong></div>
+                    <div class="detail"><span>Nationalité</span><strong>Burkinabé</strong></div>
+                    <div class="detail"><span>Né le</span><strong>13 juillet 1994</strong></div>
+                    <div class="detail"><span>Lieu de naissance</span><strong>Ouagadougou</strong></div>
+                    <div class="detail"><span>Situation matrimoniale</span><strong>Célibataire, un enfant</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section" id="experiences" aria-labelledby="experience-title">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Parcours professionnel</p>
+                        <h2 id="experience-title">Expériences</h2>
+                    </div>
+                    <p class="section-intro">Des interventions en électricité industrielle, travaux de réseaux, équipements HTA et suivi de projets.</p>
+                </div>
+                <div class="timeline">
+                    <article class="timeline-item current-role">
+                        <div class="timeline-date">Depuis le 10 mai 2021</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">MCE SARL</p>
+                            <h3>Technicien supérieur en électricité</h3>
+                            <p class="timeline-summary">Responsabilités de chef de chantier, chef d’équipe, superviseur et suivi-évaluation de marchés.</p>
+                            <h4>Projets et responsabilités</h4>
+                            <ul class="cv-list">
+                                <li>Gestion du stock du parc matériel et des équipements du projet à Koudougou, avec un système de contrôle, de suivi et d’évaluation pour assurer leur disponibilité, leur traçabilité et leur bonne utilisation.</li>
+                                <li>Installation et mise en service de cellules 15 kV (deux cellules IM et une cellule de protection) au poste du site minier de Kiaka.</li>
+                                <li>Installation d’un système de monitoring des températures du groupe G1 de la centrale de Kossodo.</li>
+                                <li>Passage en 33 kV de la zone industrielle de Koudougou, renforcement du réseau HTA de Fada N’Gourma et passage en 33 kV du réseau de Fada ville, Fada–Kantchari et Koudougou, y compris le réseau souterrain.</li>
+                                <li>Installation et mise en service de deux transformateurs de 15 MVA à la centrale SONABEL Bobo II.</li>
+                                <li>Installation de chargeurs 48 VDC et de batteries à SONABEL Ouaga 2000, Patte d’Oie et Kodéni (Bobo).</li>
+                                <li>Remplacement de cellules CPI à la centrale solaire de Zagtouli; fourniture et installation de batteries de condensateurs 48 VDC à SONABEL Ouaga II et Zagtouli.</li>
+                                <li>Dépannage de cellules disjoncteurs F400 à la centrale de Kodéni, à Bobo; installation de détecteurs de défauts aériens sur les départs de Ouaga 2.</li>
+                                <li>Montage d’appels d’offres, consultation de fournisseurs internationaux, commandes et suivi-évaluation de marchés.</li>
+                                <li>Études de lignes HTA pour Orodara, Niangologo, Fada et Fada–Tandjari avec CAMELIA Calcul, CAMELIA Profil et COMAC; études et participation au dépouillement de dossiers d’appels d’offres.</li>
+                                <li>Étude de passage en 33 kV de la ligne Fada–Tandjari : remplacement de supports HEA par des supports HEB et de leurs armements, et remplacement du câble 75,6 mm² par un câble ASTER de 146 mm².</li>
+                                <li>Projet d’étude d’implantation d’une usine moderne au Burkina Faso, avec une production visée d’un million de tonnes par an.</li>
+                            </ul>
+                            <div class="mission">
+                                <p class="timeline-kicker">Mission technique · Ankara, Turquie · 13–18 mars 2025</p>
+                                <h4>Tests d’acceptation en usine (FAT) et formation</h4>
+                                <p>Mission pour Multi Concept Énergie dans le cadre d’un marché SONABEL à Koudougou. Tests de cellules HT avec sectionneur, transformateurs de puissance de 400, 250 et 160 kVA et TGBT; vérification de la conformité aux spécifications contractuelles, échanges avec les ingénieurs du fabricant et rédaction d’un rapport de validation.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">2 février – 25 avril 2021</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">Particulier</p>
+                            <h3>Superviseur de chantier · Installations bâtiment</h3>
+                            <p class="timeline-summary">Supervision des installations d’un immeuble R+1.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">17 septembre – 16 novembre 2020</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">SONABHY · Bingo</p>
+                            <h3>Stage</h3>
+                            <ul class="cv-list">
+                                <li>Remplissage de gaz et maintenance des groupes du dépôt.</li>
+                                <li>Maintenance de moteurs électriques et de variateurs de vitesse; conduite de chariots élévateurs.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">Juillet – septembre 2019</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">SONABEL · Conduite des réseaux</p>
+                            <h3>Stage en électricité</h3>
+                            <ul class="cv-list">
+                                <li>Étude et bilan des défauts du départ de Ziniaré.</li>
+                                <li>Étude des spécifications techniques des équipements présents sur le réseau HTA.</li>
+                                <li>Essais et mise en service de nouvelles installations HTA.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">1er juin – 30 septembre 2018</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">CIMFASO</p>
+                            <h3>Stage en électricité industrielle et automatisme</h3>
+                            <ul class="cv-list">
+                                <li>Usinage et fabrication de pièces mécaniques pour presse hydraulique (tour, fraiseuse, perceuse et scie).</li>
+                                <li>Maintenance et remplacement de godets élévateurs, bandes transporteuses des doseurs clinker, gypse et additif, et unités de filtration d’huile sous pression.</li>
+                                <li>Entretien et reconditionnement de groupes compresseurs Atlas Copco et de surpresseurs Blowers.</li>
+                                <li>Maintenance d’armoires électriques, contrôles quotidiens dans l’usine et étude et installation de compresseurs d’air 30 bars.</li>
+                                <li>Mise à jour et maintenance quotidiennes des ROTOPARKERS au niveau de l’assécheuse.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">2 mai – 31 août 2017</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">SONABEL · DCET</p>
+                            <h3>Stage en électricité</h3>
+                            <ul class="cv-list">
+                                <li>Étude et dimensionnement des protections de distance (relais de protection) de la ligne 90 kV Zagtouli–Ouahigouya.</li>
+                                <li>Conception et modélisation 3D sur AutoCAD 2016.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">3 août – 2 octobre 2015</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">Ziniaré</p>
+                            <h3>Installations électriques et solaires</h3>
+                            <p class="timeline-summary">Installation de plaques solaires, de pompes solaires et installations de bâtiments.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-date">1er – 31 juillet 2011</div>
+                        <div class="timeline-content">
+                            <p class="timeline-kicker">SONABEL · DCET · Ouagadougou</p>
+                            <h3>Stage en électricité</h3>
+                            <p class="timeline-summary">Installation et maintenance de climatiseurs de la SONABEL.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section education-section" id="formation" aria-labelledby="education-title">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Études et formations professionnelles</p>
+                        <h2 id="education-title">Formation</h2>
+                    </div>
+                    <p class="section-intro">Un parcours en systèmes électriques, électrotechnique, maintenance industrielle et outils de conception.</p>
+                </div>
+                <div class="education-list">
+                    <article class="education-item"><time>2025–2026</time><div><h3>Master 1 en Maintenance Industrielle (GIM)</h3><p>Institut Supérieur de Technologie (IST)</p></div></article>
+                    <article class="education-item"><time>2025–2026</time><div><h3>Formation en Supply Chain Management</h3><p>Logistique</p></div></article>
+                    <article class="education-item"><time>2025–2026</time><div><h3>Ingénierie d’implantation d’usine</h3></div></article>
+                    <article class="education-item"><time>2023</time><div><h3>Formation sur SOLIDWORKS</h3></div></article>
+                    <article class="education-item"><time>2021</time><div><h3>Formation aux logiciels CAMELIA CALCUL, CAMELIA PROFIL et COMAC</h3></div></article>
+                    <article class="education-item"><time>2019–2020</time><div><h3>Certificat d’aptitude professionnelle (CAP)</h3></div></article>
+                    <article class="education-item"><time>2017–2018</time><div><h3>Diplôme d’Ingénieur de Travaux des Systèmes Électriques</h3><p>Institut Supérieur de Génie Électrique du Burkina Faso (ISGE-BF)</p></div></article>
+                    <article class="education-item"><time>2016–2017</time><div><h3>Diplôme de Technicien Supérieur en Électricité Industrielle (DTS)</h3><p>Institut Supérieur de Génie Électrique du Burkina Faso (ISGE-BF)</p></div></article>
+                    <article class="education-item"><time>2015–2016</time><div><h3>Formation en santé et sécurité au travail</h3><p>Institut Supérieur de Génie Électrique du Burkina Faso (ISGE-BF)</p></div></article>
+                    <article class="education-item"><time>2013–2014</time><div><h3>Baccalauréat Génie électrique, électrotechnique (BAC F3)</h3><p>Lycée de la Jeunesse</p></div></article>
+                    <article class="education-item"><time>2010–2011</time><div><h3>Brevet d’études du premier cycle (BEPC)</h3><p>Sacré Cœur de Banfora</p></div></article>
+                    <article class="education-item"><time>2004–2005</time><div><h3>Certificat d’études primaires (CEP)</h3><p>École Avenir de Banfora</p></div></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section" id="competences" aria-labelledby="skills-title">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Outils et savoir-faire</p>
+                        <h2 id="skills-title">Compétences</h2>
+                    </div>
+                    <p class="section-intro">Compétences informatiques, langues et qualifications complémentaires mentionnées dans le CV.</p>
+                </div>
+                <div class="skills-grid">
+                    <article class="skill-block">
+                        <p class="timeline-kicker">Informatique · Bureautique</p>
+                        <h3>Outils bureautiques</h3>
+                        <p>Microsoft Word, Excel, PowerPoint et Project.</p>
+                    </article>
+                    <article class="skill-block">
+                        <p class="timeline-kicker">Informatique · Technique</p>
+                        <h3>Logiciels techniques</h3>
+                        <p>Visio, AutoCAD, ArchiCAD, Win Relay, XLPro, CAMELIA Calcul, CAMELIA Profil, COMAC et SOLIDWORKS.</p>
+                    </article>
+                    <article class="skill-block">
+                        <p class="timeline-kicker">Langues</p>
+                        <h3>Communication</h3>
+                        <ul class="language-list">
+                            <li><span>Français</span><span>Parlé et écrit</span></li>
+                            <li><span>Anglais</span><span>Parlé et écrit</span></li>
+                            <li><span>Moore</span><span>Parlé</span></li>
+                            <li><span>Dioula</span><span>Parlé</span></li>
+                        </ul>
+                    </article>
+                    <article class="skill-block">
+                        <p class="timeline-kicker">Qualifications</p>
+                        <h3>Autres atouts</h3>
+                        <ul class="cv-list">
+                            <li>Organisation et gestion du personnel.</li>
+                            <li>Communication et travail en équipe.</li>
+                            <li>Réalisation de tâches administratives et adaptation rapide aux logiciels.</li>
+                            <li>Permis de conduire C.</li>
+                            <li>Formation en santé et secourisme à l’ISGE-BF.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-band" id="contact" aria-labelledby="contact-title">
+            <div class="container contact-layout">
+                <div class="contact-copy">
+                    <p class="section-kicker">Échangeons</p>
+                    <h2 id="contact-title">Contact & références</h2>
+                    <p>Ouagadougou, Burkina Faso · Né le 13 juillet 1994</p>
+                    <a class="contact-email" href="mailto:yvesjouedraogo@gmail.com">yvesjouedraogo@gmail.com</a>
+                    <a class="contact-email" href="mailto:joelouedraogo94@gmail.com">joelouedraogo94@gmail.com</a>
+                    <div class="phone-list">
+                        <a href="tel:+22670012214">+226 70 01 22 14</a>
+                        <a href="tel:+22678481851">+226 78 48 18 51</a>
+                    </div>
+                </div>
+                <div class="references">
+                    <p class="timeline-kicker">Références professionnelles</p>
+                    <article class="reference"><h3>Issiaka BARGO</h3><p>Chef de Département, SONABEL DCET</p><a href="tel:+22670238907">+226 70 23 89 07</a></article>
+                    <article class="reference"><h3>Désiré OUEDRAOGO</h3><p>Chef de division transport, SONABEL</p><a href="tel:+22670260471">+226 70 26 04 71</a></article>
+                    <article class="reference"><h3>Adama SORO</h3><p>Automaticien, CIMFASO</p><a href="tel:+22661835888">+226 61 83 58 88</a></article>
+                    <article class="reference"><h3>Hamidou SAWADOGO</h3><p>Chef du Département Réseaux Conduites, SONABEL</p><a href="tel:+22670273431">+226 70 27 34 31</a></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="declaration container" aria-label="Déclaration sur l’honneur">
+            <p>Je soussigné, certifie en toute conscience que les renseignements ci-dessus rendent fidèlement compte de ma situation, de mes qualifications et de mon expérience.</p>
+            <p><strong>Ouagadougou, le 25 septembre 2026</strong><br>Yves Joël OUEDRAOGO</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner container">
+            <p>Yves Joël OUEDRAOGO · CV professionnel</p>
+            <p>Copyright 2026</p>
+        </div>
+    </footer>
+</body>
+
+</html>
