@@ -171,6 +171,8 @@
 
         .portfolio-section { padding-block: 88px 96px; border-top: 1px solid var(--line); background: var(--wash); }
         .portfolio-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+        .portfolio-galleries { display: grid; gap: 38px; }
+        .portfolio-group h3 { margin: 0 0 15px; color: var(--green); font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 500; }
         .portfolio-item { min-width: 0; margin: 0; background: white; }
         .portfolio-item a { display: block; overflow: hidden; aspect-ratio: 4 / 3; background: #dce5df; }
         .portfolio-item img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .3s ease; }
@@ -457,21 +459,11 @@
                 <div class="section-heading">
                     <div>
                         <p class="section-kicker">Sur le terrain</p>
-                        <h2 id="portfolio-title">Réalisations de chantier</h2>
+                        <h2 id="portfolio-title">Chantiers et déplacements</h2>
                     </div>
-                    <p class="section-intro">Quelques interventions et installations menées au fil de mon parcours professionnel.</p>
+                    <p class="section-intro">Photos des chantiers et déplacements professionnels, classées selon les sept dossiers d’origine.</p>
                 </div>
-                <div class="portfolio-grid">
-                    <figure class="portfolio-item"><a href="chantier/img1.jpg" target="_blank" rel="noopener"><img src="chantier/img1.jpg" alt="Photo de chantier électrique 1" loading="lazy"></a><figcaption>Intervention électrique</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img2.jpg" target="_blank" rel="noopener"><img src="chantier/img2.jpg" alt="Photo de chantier électrique 2" loading="lazy"></a><figcaption>Travaux sur installation</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img3.jpg" target="_blank" rel="noopener"><img src="chantier/img3.jpg" alt="Photo de chantier électrique 3" loading="lazy"></a><figcaption>Équipements électriques</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img4.jpg" target="_blank" rel="noopener"><img src="chantier/img4.jpg" alt="Photo de chantier électrique 4" loading="lazy"></a><figcaption>Réalisation sur site</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img5.jpg" target="_blank" rel="noopener"><img src="chantier/img5.jpg" alt="Photo de chantier électrique 5" loading="lazy"></a><figcaption>Travaux de réseau</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img6.jpg" target="_blank" rel="noopener"><img src="chantier/img6.jpg" alt="Photo de chantier électrique 6" loading="lazy"></a><figcaption>Installation électrique</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/i%C3%B9g7.jpg" target="_blank" rel="noopener"><img src="chantier/i%C3%B9g7.jpg" alt="Photo de chantier électrique 7" loading="lazy"></a><figcaption>Suivi de chantier</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img8.jpg" target="_blank" rel="noopener"><img src="chantier/img8.jpg" alt="Photo de chantier électrique 8" loading="lazy"></a><figcaption>Intervention sur réseau</figcaption></figure>
-                    <figure class="portfolio-item"><a href="chantier/img10.jpg" target="_blank" rel="noopener"><img src="chantier/img10.jpg" alt="Photo de chantier électrique 9" loading="lazy"></a><figcaption>Travaux électriques</figcaption></figure>
-                </div>
+                <div class="portfolio-galleries" id="portfolio-galleries"></div>
             </div>
         </section>
 
@@ -581,6 +573,56 @@
             <p>Copyright 2026</p>
         </div>
     </footer>
+    <script>
+        const photoFolders = [
+            { name: "Chantier 1", files: ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg", "img7.jpg", "img8.jpg", "img9.jpg", "img10.jpg", "img11.jpg", "img12.jpg", "img13.jpg", "img14.jpg", "img15.jpg", "img16.jpg", "img17.jpg"] },
+            { name: "Chantier 2", files: ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"] },
+            { name: "Chantier 3", files: ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"] },
+            { name: "Chantier 4", files: ["img1.jpg", "img2.jpg", "img3.jpg", "img 4.jpg", "img 6.jpg", "img6.jpg", "img7.jpg"] },
+            { name: "Chantier 5", files: ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img6.jpg", "img7.jpg", "img8.jpg", "img9.jpg", "img 10.jpg", "img11.jpg"] },
+            { name: "Chantier 6", files: ["img1.jpg", "img2.jpg", "img5.jpg", "img6.jpg", "iùg4.jpg", "iùg7.jpg"] },
+            { name: "Chantier 7", files: ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"] }
+        ];
+
+        const galleries = document.querySelector("#portfolio-galleries");
+        photoFolders.forEach((folder, folderIndex) => {
+            const group = document.createElement("section");
+            group.className = "portfolio-group";
+
+            const heading = document.createElement("h3");
+            heading.textContent = folder.name;
+            group.append(heading);
+
+            const grid = document.createElement("div");
+            grid.className = "portfolio-grid";
+            folder.files.forEach((file, imageIndex) => {
+                const imagePath = `photo%20de%20chantier/chantier%20${folderIndex + 1}/${encodeURIComponent(file)}`;
+                const figure = document.createElement("figure");
+                figure.className = "portfolio-item";
+
+                const link = document.createElement("a");
+                link.href = imagePath;
+                link.target = "_blank";
+                link.rel = "noopener";
+                link.setAttribute("aria-label", `Ouvrir ${folder.name}, photo ${imageIndex + 1}`);
+
+                const image = document.createElement("img");
+                image.src = imagePath;
+                image.alt = `${folder.name}, photo ${imageIndex + 1}`;
+                image.loading = "lazy";
+                link.append(image);
+                figure.append(link);
+
+                const caption = document.createElement("figcaption");
+                caption.textContent = `Photo ${String(imageIndex + 1).padStart(2, "0")}`;
+                figure.append(caption);
+                grid.append(figure);
+            });
+
+            group.append(grid);
+            galleries.append(group);
+        });
+    </script>
 </body>
 
 </html>
